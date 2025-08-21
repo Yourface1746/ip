@@ -36,6 +36,19 @@ public class Sunday {
                         Task task = taskList.get(i);
                         System.out.println(i + 1 + ". " + task.toString());
                     }
+                } else if (Objects.equals(parts[0], "delete")) {
+                    if (parts.length < 2 || parts[1].isBlank()) {
+                        throw new MissingTaskNumberException();
+                    }
+                    int pos = Integer.parseInt(parts[1]);
+                    if (pos <= 0 || pos > taskList.size()) {
+                        throw new TaskNumberOutOfRangeException(pos, taskList.size());
+                    }
+                    Task removed = taskList.remove(pos - 1);
+                    taskCounter--;
+                    System.out.println(" Noted. I've removed this task:");
+                    System.out.println("   " + removed);
+                    System.out.println(" Now you have " + taskList.size() + " tasks in the list.");
                 } else if (Objects.equals(parts[0], "mark")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new MissingTaskNumberException();
