@@ -9,6 +9,11 @@ public class Task {
         this.completed = false;
     }
 
+    public Task(String taskName, boolean completed) {
+        this.taskName = taskName;
+        this.completed = completed;
+    }
+
     public String getStatus() {
         return this.completed ? "X" : " ";
     }
@@ -21,8 +26,20 @@ public class Task {
         this.completed = false;
     }
 
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public boolean isDone() {
+        return completed;
+    }
+
     public String toString() {
         return "[" + this.getStatus() + "] " + this.taskName;
+    }
+
+    public String convertor() {
+        return "T | " + (completed ? 1 : 0) + " | " + taskName;
     }
 
     public String getAddMessage(int count) {
