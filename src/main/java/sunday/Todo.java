@@ -1,8 +1,9 @@
 package sunday;
 
 public class Todo extends Task{
-    public Todo(String taskName) {
-        super(taskName);
+    private boolean done;
+    public Todo(String taskName, boolean done) {
+        super(taskName, done);
     }
 
     public String toString() {

@@ -3,13 +3,15 @@ package sunday;
 import exceptions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Sunday {
     public static void main(String[] args) {
         Scanner myInput = new Scanner(System.in);
-        ArrayList<Task> taskList = new ArrayList<>(100);
+        //Initialise the file
+        List<Task> taskList = new ArrayList<>(Storage.load());
         int taskCounter = 0;
 
         System.out.println("--------------------------------");
@@ -49,6 +51,7 @@ public class Sunday {
                     System.out.println(" Noted. I've removed this task:");
                     System.out.println("   " + removed);
                     System.out.println(" Now you have " + taskList.size() + " tasks in the list.");
+                    Storage.save(taskList);
                 } else if (Objects.equals(parts[0], "mark")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new MissingTaskNumberException();
@@ -61,6 +64,7 @@ public class Sunday {
                     task.markAsDone();
                     System.out.println("Got it. I have marked this task as done.");
                     System.out.println(task.toString());
+                    Storage.save(taskList);
                 } else if (Objects.equals(parts[0], "unmark")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new MissingTaskNumberException();
@@ -73,14 +77,16 @@ public class Sunday {
                     task.markAsUndone();
                     System.out.println("Got it. I have marked this task as undone.");
                     System.out.println(task.toString());
+                    Storage.save(taskList);
                 } else if (Objects.equals(parts[0], "todo")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new TodoMissingDescriptionException();
                     }
-                    Task task = new Todo(parts[1]);
+                    Task task = new Todo(parts[1], false);
                     taskList.add(task);
                     taskCounter++;
                     System.out.println(task.getAddMessage(taskCounter));
+                    Storage.save(taskList);
                 } else if (Objects.equals(parts[0], "deadline")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new DeadlineMissingDescriptionException();
@@ -90,10 +96,11 @@ public class Sunday {
                     if (taskParts[0].isBlank()) {
                         throw new DeadlineMissingDescriptionException();
                     }
-                    Task task = new Deadline(taskParts[0], taskParts[1]);
+                    Task task = new Deadline(taskParts[0], taskParts[1], false);
                     taskList.add(task);
                     taskCounter++;
                     System.out.println(task.getAddMessage(taskCounter));
+                    Storage.save(taskList);
                 } else if (Objects.equals(parts[0], "event")) {
                     if (parts.length < 2 || parts[1].isBlank()) {
                         throw new EventMissingDescriptionException();
@@ -105,10 +112,11 @@ public class Sunday {
                     if (taskParts[0].isBlank()) {
                         throw new EventMissingDescriptionException();
                     }
-                    Task task = new Event(taskParts[0], timeParts[0], timeParts[1]);
+                    Task task = new Event(taskParts[0], timeParts[0], timeParts[1], false);
                     taskList.add(task);
                     taskCounter++;
                     System.out.println(task.getAddMessage(taskCounter));
+                    Storage.save(taskList);
                 } else {
                     throw new UnknownException();
                 }
