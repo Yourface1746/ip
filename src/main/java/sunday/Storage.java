@@ -66,11 +66,14 @@ public class Storage {
 
             case("D"):
                 if (parts.length < 4) throw new IllegalArgumentException("Deadline missing.");
-                return new Deadline(desc, parts[3], done);
+                return new Deadline(desc, DateTimeHelper.parseDate(parts[3]), done);
 
             case("E"):
                 if (parts.length < 5) throw new IllegalArgumentException("No Start/End time");
-                return new Event(desc, parts[3], parts[4], done);
+                return new Event(desc,
+                        DateTimeHelper.parseDateTime(parts[3]),
+                        DateTimeHelper.parseDateTime(parts[4]),
+                        done);
 
             default:
                 throw new IllegalArgumentException("Unknown Task.");

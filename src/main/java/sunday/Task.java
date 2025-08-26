@@ -39,7 +39,7 @@ public class Task {
     }
 
     public String convertor() {
-        return "T | " + (completed ? 1 : 0) + " | " + taskName;
+        return "T | " + (this.completed ? 1 : 0) + " | " + this.taskName;
     }
 
     public String getAddMessage(int count) {
