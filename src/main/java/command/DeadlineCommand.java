@@ -1,9 +1,14 @@
-package sunday;
+package command;
 
 import exceptions.DeadlineMissingByException;
 import exceptions.DeadlineMissingDescriptionException;
+import sunday.Storage;
+import sunday.TaskList;
+import sunday.Ui;
+import task.Deadline;
+import task.Task;
 
-public class DeadlineCommand extends Command{
+public class DeadlineCommand extends Command {
     private final String arg;
     public DeadlineCommand(String arg) {
         this.arg = arg.trim();

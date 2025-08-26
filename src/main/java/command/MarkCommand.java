@@ -1,10 +1,12 @@
-package sunday;
+package command;
 
 import exceptions.MissingTaskNumberException;
-import exceptions.SundayException;
 import exceptions.TaskNumberOutOfRangeException;
+import sunday.Storage;
+import sunday.TaskList;
+import sunday.Ui;
 
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
     private final boolean done;
     private final String arg;
 

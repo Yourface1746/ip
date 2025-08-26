@@ -1,4 +1,8 @@
-package sunday;
+package command;
+
+import sunday.Storage;
+import sunday.TaskList;
+import sunday.Ui;
 
 public class ByeCommand extends Command{
     @Override public void execute(TaskList t, Ui ui, Storage s) {};

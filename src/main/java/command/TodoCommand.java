@@ -1,8 +1,13 @@
-package sunday;
+package command;
 
 import exceptions.TodoMissingDescriptionException;
+import sunday.Storage;
+import sunday.TaskList;
+import sunday.Ui;
+import task.Task;
+import task.Todo;
 
-public class TodoCommand extends Command{
+public class TodoCommand extends Command {
     private final String desc;
     public TodoCommand(String arg) {
         this.desc = arg.trim();

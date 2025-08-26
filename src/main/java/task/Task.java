@@ -1,4 +1,4 @@
-package sunday;
+package task;
 
 public class Task {
     private String taskName;

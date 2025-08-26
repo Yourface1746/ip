@@ -1,5 +1,6 @@
 package sunday;
 
+import command.Command;
 import exceptions.*;
 
 import static sunday.Parser.parse;

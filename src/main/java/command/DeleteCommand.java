@@ -1,9 +1,13 @@
-package sunday;
+package command;
 
 import exceptions.MissingTaskNumberException;
 import exceptions.TaskNumberOutOfRangeException;
+import sunday.Storage;
+import sunday.TaskList;
+import sunday.Ui;
+import task.Task;
 
-public class DeleteCommand extends Command{
+public class DeleteCommand extends Command {
     private final String arg;
 
     public DeleteCommand(String arg) {
