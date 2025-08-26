@@ -40,6 +40,6 @@ public class Event extends Task {
                 + " | "
                 + this.startDate.format(DateTimeHelper.dateTimeSave)
                 + " | "
-                + this.endDate.format(DateTimeHelper.dateTimePrint);
+                + this.endDate.format(DateTimeHelper.dateTimeSave);
     }
 }

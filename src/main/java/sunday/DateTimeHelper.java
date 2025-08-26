@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DateTimeHelper {
     private static final List<DateTimeFormatter> DATEIN = List.of(
-            DateTimeFormatter.ISO_DATE,
+            DateTimeFormatter.ISO_LOCAL_DATE,
             DateTimeFormatter.ofPattern("uuuu-MM-dd"),
             DateTimeFormatter.ofPattern("d/M/uuuu")
     );
@@ -19,8 +19,8 @@ public class DateTimeHelper {
             DateTimeFormatter.ofPattern("d/M/uuuu HH:mm")
     );
 
-    public static DateTimeFormatter dateSave = DateTimeFormatter.ISO_DATE_TIME;
-    public static DateTimeFormatter dateTimeSave = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm");
+    public static final DateTimeFormatter dateSave = DateTimeFormatter.ISO_LOCAL_DATE;
+    public static final DateTimeFormatter dateTimeSave = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm");
 
     public static final DateTimeFormatter datePrint = DateTimeFormatter.ofPattern("MMM dd uuuu");
     public static final DateTimeFormatter dateTimePrint = DateTimeFormatter.ofPattern("MMM dd uuuu h:mma");
