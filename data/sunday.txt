@@ -1,2 +1,1 @@
 T | 0 | read book
-E | 0 | meeting  | 2025-08-25 1800 | Aug 26 2025 5:00PM
