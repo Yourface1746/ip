@@ -2,6 +2,7 @@ package sunday;
 
 import task.Task;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -44,6 +45,21 @@ public class Ui {
         for(int i = 0; i < taskList.size(); i++) {
             Task task = taskList.get(i);
             System.out.println(i + 1 + ". " + task.toString());
+        }
+    }
+
+    /**
+     *Shows the result of the search
+     * @param result of search
+     */
+    public void showFindResult(List<Task> result) {
+        if(result.isEmpty()) {
+            System.out.println("No matches found. (ouO)");
+        } else {
+            System.out.println("Here are the tasks that we found:\n");
+            for(int i = 0; i < result.size(); i++) {
+                System.out.println(i + 1 + ". " + result.get(i));
+            }
         }
     }
 }
