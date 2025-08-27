@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;;
 
+/**
+ * Handles persistence of tasks to disk. Creates missing folders/files on first run
+ * and reads/writes tasks using a stable, line-based text format.
+ */
 public class Storage {
 
     private final Path dataDir;
@@ -30,6 +33,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Reads tasks from disk.
+     *
+     * @return tasks parsed from the save file
+     */
     public List<Task> load() {
         try {
             ensureFileExist();
@@ -46,6 +54,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves tasks to disk.
+     *
+     * @param tasks tasks to persist
+     */
     public void save(List<Task> tasks) {
         try {
             ensureFileExist();

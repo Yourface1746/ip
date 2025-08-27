@@ -1,5 +1,8 @@
 package task;
 
+/**
+ * Abstract base class for all task types.
+ */
 public class Task {
     private String taskName;
     private boolean completed;
@@ -14,22 +17,27 @@ public class Task {
         this.completed = completed;
     }
 
+    /** @return "[X]" if done, "[ ]" if not */
     public String getStatus() {
         return this.completed ? "X" : " ";
     }
 
+    /** Marks this task as done. */
     public void markAsDone() {
         this.completed = true;
     }
 
+    /** Marks this task as undone. */
     public void markAsUndone() {
         this.completed = false;
     }
 
+    /** @return task description */
     public String getTaskName() {
         return taskName;
     }
 
+    /** @return true if task is marked done */
     public boolean isDone() {
         return completed;
     }
@@ -38,6 +46,7 @@ public class Task {
         return "[" + this.getStatus() + "] " + this.taskName;
     }
 
+    /** @return save format of the task */
     public String convertor() {
         return "T | " + (this.completed ? 1 : 0) + " | " + this.taskName;
     }

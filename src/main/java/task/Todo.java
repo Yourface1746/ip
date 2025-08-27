@@ -1,5 +1,8 @@
 package task;
 
+/**
+ * A simple task without deadlines or durations.
+ */
 public class Todo extends Task {
     private boolean done;
     public Todo(String taskName, boolean done) {

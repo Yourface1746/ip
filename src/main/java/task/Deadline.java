@@ -1,9 +1,11 @@
 package task;
 
 import sunday.DateTimeHelper;
-
 import java.time.LocalDate;
 
+/**
+ * A task with a deadline date.
+ */
 public class Deadline extends Task {
     private LocalDate deadLine;
 

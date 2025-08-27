@@ -6,6 +6,9 @@ import sunday.Storage;
 import sunday.TaskList;
 import sunday.Ui;
 
+/**
+ * Command to mark task as done/undone.
+ */
 public class MarkCommand extends Command {
     private final boolean done;
     private final String arg;

@@ -9,6 +9,9 @@ import sunday.Ui;
 import task.Event;
 import task.Task;
 
+/**
+ * Command to save task as event.
+ */
 public class EventCommand extends Command {
     private final String arg;
     public EventCommand(String arg) {

@@ -8,6 +8,9 @@ import sunday.Ui;
 import task.Deadline;
 import task.Task;
 
+/**
+ * Command to save task as deadline.
+ */
 public class DeadlineCommand extends Command {
     private final String arg;
     public DeadlineCommand(String arg) {
