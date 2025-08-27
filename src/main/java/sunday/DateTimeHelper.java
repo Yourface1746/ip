@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Utility for parsing and formatting dates and times consistently.
+ */
 public class DateTimeHelper {
     private static final List<DateTimeFormatter> DATEIN = List.of(
             DateTimeFormatter.ISO_LOCAL_DATE,
@@ -25,6 +28,13 @@ public class DateTimeHelper {
     public static final DateTimeFormatter datePrint = DateTimeFormatter.ofPattern("MMM dd uuuu");
     public static final DateTimeFormatter dateTimePrint = DateTimeFormatter.ofPattern("MMM dd uuuu h:mma");
 
+    /**
+     * Parses a date string into a LocalDate using several supported formats.
+     *
+     * @param date date string
+     * @return parsed LocalDate
+     * @throws IllegalArgumentException if none match
+     */
     public static LocalDate parseDate(String date) {
         for(var type : DATEIN) {
             try { return LocalDate.parse(date.trim(), type); } catch (Exception ignored) {}
@@ -32,6 +42,13 @@ public class DateTimeHelper {
         throw new IllegalArgumentException("Invalid date: " + date);
     }
 
+    /**
+     * Parses a date-time string into a LocalDateTime using several supported formats.
+     *
+     * @param dateTime date-time string
+     * @return parsed LocalDateTime
+     * @throws IllegalArgumentException if none match
+     */
     public static LocalDateTime parseDateTime(String dateTime) {
         for(var type : DATETIMEIN) {
             try { return LocalDateTime.parse(dateTime.trim(), type); } catch (Exception ignored) {}

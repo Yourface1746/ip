@@ -2,9 +2,12 @@ package sunday;
 
 import command.Command;
 import exceptions.*;
-
 import static sunday.Parser.parse;
 
+/**
+ * Entry point of the Sunday chatbot application.
+ * Initializes storage, UI, and task list, then runs the main loop.
+ */
 public class Sunday {
     private final Ui ui;
     private final Storage storage;
@@ -23,6 +26,11 @@ public class Sunday {
         this.taskList = loaded;
     }
 
+    /**
+     * Runs the main event loop of the chatbot:
+     * reads user input, parses into commands, executes them,
+     * until the user exits.
+     */
     public void run() throws Exception {
         ui.welcome();
         boolean isExit = false;

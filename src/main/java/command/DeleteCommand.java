@@ -7,6 +7,9 @@ import sunday.TaskList;
 import sunday.Ui;
 import task.Task;
 
+/**
+ * Command to delete.
+ */
 public class DeleteCommand extends Command {
     private final String arg;
 

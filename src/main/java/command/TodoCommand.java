@@ -7,6 +7,9 @@ import sunday.Ui;
 import task.Task;
 import task.Todo;
 
+/**
+ * Command to save task as todo.
+ */
 public class TodoCommand extends Command {
     private final String desc;
     public TodoCommand(String arg) {

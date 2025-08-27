@@ -1,9 +1,11 @@
 package task;
 
 import sunday.DateTimeHelper;
-
 import java.time.LocalDateTime;
 
+/**
+ * A task that spans from a start to an end datetime.
+ */
 public class Event extends Task {
     private LocalDateTime startDate;
     private LocalDateTime endDate;

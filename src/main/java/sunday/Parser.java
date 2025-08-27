@@ -11,9 +11,19 @@ import task.Todo;
 
 import java.util.Objects;
 
+/**
+ * Parses user input into commands and reconstructs tasks from saved lines.
+ */
 public class Parser {
     public Parser() {}
 
+    /**
+     * Parses a raw user input line into a Command.
+     *
+     * @param fullCommand full user input
+     * @return the command
+     * @throws SundayException if input is empty or unknown
+     */
     public static Command parse(String fullCommand) throws SundayException {
         if(fullCommand.isEmpty()) {
             throw new EmptyCommandException();
@@ -43,6 +53,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a serialized task line back into a Task.
+     *
+     * @param line serialized task line
+     * @return reconstructed task
+     */
     public static Task lineToTaskCorrectly(String line) {
         String[] parts = line.split("\\|");
         for(int i = 0; i < parts.length; i++) {  parts[i] = parts[i].trim(); }
