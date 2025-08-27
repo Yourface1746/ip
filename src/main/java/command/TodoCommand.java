@@ -12,6 +12,7 @@ import task.Todo;
  */
 public class TodoCommand extends Command {
     private final String desc;
+
     public TodoCommand(String arg) {
         this.desc = arg.trim();
     }

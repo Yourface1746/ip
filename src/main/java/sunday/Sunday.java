@@ -1,7 +1,8 @@
 package sunday;
 
 import command.Command;
-import exceptions.*;
+import exceptions.SundayException;
+
 import static sunday.Parser.parse;
 
 /**
@@ -35,7 +36,7 @@ public class Sunday {
         ui.welcome();
         boolean isExit = false;
 
-        while(!isExit) {
+        while (!isExit) {
             try {
                 ui.showDivider();
                 String fullCommand = ui.readInput();
@@ -49,6 +50,7 @@ public class Sunday {
         }
         ui.bye();
     }
+
     public static void main(String[] args) throws Exception {
         new Sunday("data/sunday.txt").run();
     }

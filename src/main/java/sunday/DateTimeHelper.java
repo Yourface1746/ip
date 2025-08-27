@@ -36,8 +36,11 @@ public class DateTimeHelper {
      * @throws IllegalArgumentException if none match
      */
     public static LocalDate parseDate(String date) {
-        for(var type : DATEIN) {
-            try { return LocalDate.parse(date.trim(), type); } catch (Exception ignored) {}
+        for (var type : DATEIN) {
+            try {
+                return LocalDate.parse(date.trim(), type);
+            } catch (Exception ignored) {
+            }
         }
         throw new IllegalArgumentException("Invalid date: " + date);
     }
@@ -50,8 +53,11 @@ public class DateTimeHelper {
      * @throws IllegalArgumentException if none match
      */
     public static LocalDateTime parseDateTime(String dateTime) {
-        for(var type : DATETIMEIN) {
-            try { return LocalDateTime.parse(dateTime.trim(), type); } catch (Exception ignored) {}
+        for (var type : DATETIMEIN) {
+            try {
+                return LocalDateTime.parse(dateTime.trim(), type);
+            } catch (Exception ignored) {
+            }
         }
         throw new IllegalArgumentException("Invalid date and time: " + dateTime);
     }

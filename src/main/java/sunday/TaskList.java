@@ -1,9 +1,9 @@
 package sunday;
 
-import task.Task;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import task.Task;
 
 /**
  * Encapsulates the list of tasks and operations on them.
@@ -11,7 +11,10 @@ import java.util.List;
 public class TaskList {
     private final List<Task> taskList;
 
-    public TaskList() { this.taskList = new ArrayList<>(); }
+    public TaskList() {
+        this.taskList = new ArrayList<>();
+    }
+
     public TaskList(List<Task> initial) {
         this.taskList = new ArrayList<>(initial);
     }
@@ -26,12 +29,16 @@ public class TaskList {
         return this.taskList.get(i);
     }
 
-    /** @return number of tasks in the list */
+    /**
+     * @return number of tasks in the list
+     */
     public int size() {
         return this.taskList.size();
     }
 
-    /** @return true if list is empty */
+    /**
+     * @return true if list is empty
+     */
     public boolean isEmpty() {
         return this.taskList.isEmpty();
     }
@@ -39,7 +46,7 @@ public class TaskList {
     /**
      * Adds a task to the list and saves to storage.
      *
-     * @param task task to add
+     * @param task    task to add
      * @param storage storage to persist changes
      */
     public void add(Task task, Storage storage) {
@@ -50,7 +57,7 @@ public class TaskList {
     /**
      * Deletes a task at the given index and saves.
      *
-     * @param id index (0-based)
+     * @param id      index (0-based)
      * @param storage storage to persist changes
      * @return deleted task
      */
@@ -63,8 +70,8 @@ public class TaskList {
     /**
      * Marks/unmarks a task and saves.
      *
-     * @param id index (0-based)
-     * @param done true = done, false = undone
+     * @param id      index (0-based)
+     * @param done    true = done, false = undone
      * @param storage storage to persist changes
      */
     public void setAsDone(int id, boolean done, Storage storage) {

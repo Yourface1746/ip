@@ -14,6 +14,7 @@ import task.Task;
  */
 public class EventCommand extends Command {
     private final String arg;
+
     public EventCommand(String arg) {
         this.arg = arg.trim();
     }

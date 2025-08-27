@@ -13,6 +13,7 @@ import task.Task;
  */
 public class DeadlineCommand extends Command {
     private final String arg;
+
     public DeadlineCommand(String arg) {
         this.arg = arg.trim();
     }

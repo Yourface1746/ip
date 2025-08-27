@@ -17,6 +17,7 @@ public class MarkCommand extends Command {
         this.done = done;
         this.arg = arg;
     }
+
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws Exception {
         if (arg == null || arg.isBlank()) {

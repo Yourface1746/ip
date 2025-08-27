@@ -1,7 +1,8 @@
 package task;
 
-import sunday.DateTimeHelper;
 import java.time.LocalDate;
+
+import sunday.DateTimeHelper;
 
 /**
  * A task with a deadline date.

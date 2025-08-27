@@ -1,12 +1,14 @@
 package sunday;
 
-import task.Task;
-
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import task.Task;
 
 /**
  * Handles persistence of tasks to disk. Creates missing folders/files on first run
@@ -25,10 +27,10 @@ public class Storage {
     }
 
     private void ensureFileExist() throws IOException {
-        if(!Files.exists(dataDir)) {
+        if (!Files.exists(dataDir)) {
             Files.createDirectories(dataDir);
         }
-        if(!Files.exists(dataFile)) {
+        if (!Files.exists(dataFile)) {
             Files.createFile(dataFile);
         }
     }
@@ -42,10 +44,10 @@ public class Storage {
         try {
             ensureFileExist();
             List<String> list = Files.readAllLines(dataFile);
-            List<Task> allTask= new ArrayList<>();
+            List<Task> allTask = new ArrayList<>();
             for (String lines : list) {
                 String line = lines.trim();
-                if(line.isEmpty()) continue;
+                if (line.isEmpty()) continue;
                 allTask.add(Parser.lineToTaskCorrectly(line));
             }
             return allTask;

@@ -1,7 +1,8 @@
 package task;
 
-import sunday.DateTimeHelper;
 import java.time.LocalDateTime;
+
+import sunday.DateTimeHelper;
 
 /**
  * A task that spans from a start to an end datetime.
