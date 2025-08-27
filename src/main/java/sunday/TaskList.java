@@ -82,4 +82,25 @@ public class TaskList {
         }
         storage.save(this.taskList);
     }
+
+    /**
+     * Finds all tasks whose description contains the given keyword (case-insensitive).
+     *
+     * @param keyword search string
+     * @return matching tasks in their existing order
+     */
+    public List<Task> findByKeyword(String keyword) {
+        String key = keyword == null ? "" : keyword.trim().toLowerCase();
+        List<Task> matches = new ArrayList<>();
+        if(key.isEmpty()) {
+            return matches;
+        }
+        for(Task t : this.taskList) {
+            String desc = t.getTaskName();
+            if (desc != null && desc.toLowerCase().contains(key)) {
+                matches.add(t);
+            }
+        }
+        return matches;
+    }
 }

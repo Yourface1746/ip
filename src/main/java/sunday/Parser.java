@@ -2,14 +2,7 @@ package sunday;
 
 import java.util.Objects;
 
-import command.ByeCommand;
-import command.Command;
-import command.DeadlineCommand;
-import command.DeleteCommand;
-import command.EventCommand;
-import command.ListCommand;
-import command.MarkCommand;
-import command.TodoCommand;
+import command.*;
 import exceptions.EmptyCommandException;
 import exceptions.SundayException;
 import exceptions.UnknownException;
@@ -39,25 +32,17 @@ public class Parser {
         String[] parts = fullCommand.trim().split(" ", 2);
         String arg = parts.length > 1 ? parts[1] : "";
 
-        switch (parts[0]) {
-        case "bye":
-            return new ByeCommand();
-        case "list":
-            return new ListCommand();
-        case "mark":
-            return new MarkCommand(true, arg);
-        case "unmark":
-            return new MarkCommand(false, arg);
-        case "delete":
-            return new DeleteCommand(arg);
-        case "todo":
-            return new TodoCommand(arg);
-        case "deadline":
-            return new DeadlineCommand(arg);
-        case "event":
-            return new EventCommand(arg);
-        default:
-            throw new UnknownException();
+        switch(parts[0]) {
+        case "bye": return new ByeCommand();
+        case "list": return new ListCommand();
+        case "mark": return new MarkCommand(true, arg);
+        case "unmark": return new MarkCommand(false, arg);
+        case "delete": return new DeleteCommand(arg);
+        case "todo": return new TodoCommand(arg);
+        case "deadline": return new DeadlineCommand(arg);
+        case "event": return new EventCommand(arg);
+        case "find": return new FindCommand(arg);
+        default: throw new UnknownException();
         }
     }
 
