@@ -47,7 +47,9 @@ public class Storage {
             List<Task> allTask = new ArrayList<>();
             for (String lines : list) {
                 String line = lines.trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) {
+                    continue;
+                }
                 allTask.add(Parser.lineToTaskCorrectly(line));
             }
             return allTask;

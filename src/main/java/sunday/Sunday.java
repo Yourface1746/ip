@@ -1,9 +1,11 @@
 package sunday;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import command.Command;
 import exceptions.SundayException;
 
-import static sunday.Parser.parse;
 
 /**
  * Entry point of the Sunday chatbot application.
@@ -13,6 +15,10 @@ public class Sunday {
     private final Ui ui;
     private final Storage storage;
     private final TaskList taskList;
+
+    public Sunday() {
+        this("data/sunday.txt");
+    }
 
     public Sunday(String filePath) {
         this.ui = new Ui();
@@ -40,7 +46,7 @@ public class Sunday {
             try {
                 ui.showDivider();
                 String fullCommand = ui.readInput();
-                Command command = parse(fullCommand);
+                Command command = Parser.parse(fullCommand);
                 command.execute(this.taskList, this.ui, this.storage);
                 isExit = command.isExit();
                 ui.showDivider();
@@ -49,6 +55,40 @@ public class Sunday {
             }
         }
         ui.bye();
+    }
+
+    /**
+     * Executes a single user command and returns the text that would normally be printed.
+     * Used by the JavaFX GUI.
+     */
+    public String getResponse(String input) {
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        try (PrintStream ps = new PrintStream(buffer)) {
+            System.setOut(ps);
+            try {
+                Command command = Parser.parse(input);
+                command.execute(this.taskList, this.ui, this.storage);
+            } catch (SundayException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } finally {
+            System.setOut(originalOut);
+        }
+        String out = buffer.toString().trim();
+        return out.isEmpty() ? "(no output)" : out;
+    }
+
+    /** Returns true if the given input is an exit command (e.g., "bye"). */
+    public boolean willExit(String input) {
+        try {
+            Command c = Parser.parse(input);
+            return c.isExit();
+        } catch (SundayException e) {
+            return false;
+        }
     }
 
     public static void main(String[] args) throws Exception {
