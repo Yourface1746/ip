@@ -1,0 +1,59 @@
+.root {
+    base-bg: rgb(246,250,248);
+    header-1: #0ea5e9;
+    header-2: #38bdf8;
+    accent:   #0ea5e9;
+    accent-2: #0284c7;
+
+    -fx-background-color: base-bg;
+}
+
+.header {
+    -fx-background-color: linear-gradient(to right, header-1, header-2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0.3, 0, 2);
+}
+.header .title {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.header .subtitle {
+    -fx-text-fill: rgba(255,255,255,0.85);
+    -fx-font-size: 11px;
+}
+
+#chatScroll, #chatScroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-padding: 2;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(0,0,0,0.20);
+    -fx-background-radius: 8;
+}
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #000000;
+    -fx-font-size: 13px;
+    -fx-padding: 10 12 10 12
+}
+
+.button.send {
+    -fx-background-color: accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-weight: bold;
+    -fx-padding: 8 12 8 12;
+}
+.button.send:hover  { -fx-background-color: accent-2; }
+.button.send:pressed{ -fx-translate-y: 1; }

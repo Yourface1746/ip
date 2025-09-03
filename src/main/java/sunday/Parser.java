@@ -57,7 +57,9 @@ public class Parser {
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();
         }
-        if (parts.length < 3) throw new IllegalArgumentException("Wrong line: " + line);
+        if (parts.length < 3) {
+            throw new IllegalArgumentException("Wrong line: " + line);
+        }
 
         String type = parts[0];
         boolean done = Objects.equals(parts[1], "1");
@@ -68,11 +70,15 @@ public class Parser {
             return new Todo(desc, done);
 
         case ("D"):
-            if (parts.length < 4) throw new IllegalArgumentException("Deadline missing.");
+            if (parts.length < 4) {
+                throw new IllegalArgumentException("Deadline missing.");
+            }
             return new Deadline(desc, DateTimeHelper.parseDate(parts[3]), done);
 
         case ("E"):
-            if (parts.length < 5) throw new IllegalArgumentException("No Start/End time");
+            if (parts.length < 5) {
+                throw new IllegalArgumentException("No Start/End time");
+            }
             return new Event(desc,
                     DateTimeHelper.parseDateTime(parts[3]),
                     DateTimeHelper.parseDateTime(parts[4]),

@@ -10,7 +10,7 @@ import task.Task;
 /**
  * Finds tasks whose description contains a given keyword (case-insensitive).
  */
-public class FindCommand extends Command{
+public class FindCommand extends Command {
     private final String keyword;
 
     public FindCommand(String keyword) {

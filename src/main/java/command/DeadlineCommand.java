@@ -24,7 +24,9 @@ public class DeadlineCommand extends Command {
         if (parts[0].isBlank()) {
             throw new DeadlineMissingDescriptionException();
         }
-        if (parts.length < 2) throw new DeadlineMissingByException();
+        if (parts.length < 2) {
+            throw new DeadlineMissingByException();
+        }
         Task task = new Deadline(parts[0], parts[1], false);
         taskList.add(task, storage);
         System.out.println(task.getAddMessage(taskList.size()));

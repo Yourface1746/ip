@@ -1,0 +1,17 @@
+.label {
+    -fx-background-color: #B3EBF2;
+    -fx-text-fill: #0f172a;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 16 16 4 16;
+    -fx-border-radius: 16 16 4 16;
+    -fx-border-color: rgba(0,0,0,0.10);
+    -fx-border-width: 1;
+    -fx-font-size: 13px;
+    -fx-line-spacing: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0.25, 0, 1);
+    -fx-max-width: Infinity;
+}
+
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 10, 0.5, 5, 5);
+}

@@ -92,10 +92,10 @@ public class TaskList {
     public List<Task> findByKeyword(String keyword) {
         String key = keyword == null ? "" : keyword.trim().toLowerCase();
         List<Task> matches = new ArrayList<>();
-        if(key.isEmpty()) {
+        if (key.isEmpty()) {
             return matches;
         }
-        for(Task t : this.taskList) {
+        for (Task t : this.taskList) {
             String desc = t.getTaskName();
             if (desc != null && desc.toLowerCase().contains(key)) {
                 matches.add(t);
