@@ -19,7 +19,11 @@ public class TodoCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws Exception {
-        if (desc == null || desc.isBlank()) {
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
+        assert desc != null : "Input cannot be null";
+        if (desc.isBlank()) {
             throw new TodoMissingDescriptionException();
         }
         Task task = new Todo(desc, false);

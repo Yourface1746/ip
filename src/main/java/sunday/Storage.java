@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import task.Task;
 
@@ -20,10 +21,10 @@ public class Storage {
     private final Path dataFile;
 
     public Storage(String relativeDataPath) {
+        assert relativeDataPath == null : "Storage is created with an empty string";
         this.dataFile = Paths.get(
                 System.getProperty("user.dir")).resolve(relativeDataPath);
         this.dataDir = dataFile.getParent();
-
     }
 
     private void ensureFileExist() throws IOException {
@@ -64,6 +65,7 @@ public class Storage {
      * @param tasks tasks to persist
      */
     public void save(List<Task> tasks) {
+        assert tasks != null : "No tasklist is given to save.";
         try {
             ensureFileExist();
             try (FileWriter fileWriter = new FileWriter(dataFile.toFile(), false)) {

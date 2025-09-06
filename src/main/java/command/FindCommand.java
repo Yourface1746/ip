@@ -19,6 +19,10 @@ public class FindCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws Exception {
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
+        assert keyword != null : "Input cannot be null";
         if (keyword.isBlank()) {
             ui.showError("Please provide a keyword, e.g., find book");
             return;
