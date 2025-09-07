@@ -7,14 +7,15 @@ import sunday.TaskList;
 import sunday.Ui;
 
 /**
- * Command to mark task as done/undone.
+ * Command to mark or unmark a task by its 1-based index.
+ * Validates input, updates the task status, persists the change, and prints confirmation.
  */
 public class MarkCommand extends Command {
-    private final boolean done;
+    private final boolean isDone;
     private final String arg;
 
     public MarkCommand(boolean done, String arg) {
-        this.done = done;
+        this.isDone = done;
         this.arg = arg;
     }
 
@@ -36,16 +37,20 @@ public class MarkCommand extends Command {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
         assert arg != null : "Input cannot be null";
+
         if (arg.isBlank()) {
             throw new MissingTaskNumberException();
         }
-        int pos = Integer.parseInt(arg.trim());
-        if (pos <= 0 || pos > taskList.size()) {
-            throw new TaskNumberOutOfRangeException(pos, taskList.size());
+
+        int index1Based = Integer.parseInt(arg.trim());
+        if (index1Based <= 0 || index1Based > taskList.size()) {
+            throw new TaskNumberOutOfRangeException(index1Based, taskList.size());
         }
-        taskList.setAsDone(pos - 1, done, storage);
-        System.out.println(done ? "Got it. I have marked this task as done."
+
+        taskList.setAsDone(index1Based - 1, isDone, storage);
+
+        System.out.println(isDone ? "Got it. I have marked this task as done."
                 : "Got it. I have marked this task as undone.");
-        System.out.println(taskList.get(pos - 1).toString());
+        System.out.println(taskList.get(index1Based - 1).toString());
     }
 }

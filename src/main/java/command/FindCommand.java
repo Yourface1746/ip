@@ -23,10 +23,12 @@ public class FindCommand extends Command {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
         assert keyword != null : "Input cannot be null";
+
         if (keyword.isBlank()) {
             ui.showError("Please provide a keyword, e.g., find book");
             return;
         }
+
         List<Task> result = taskList.findByKeyword(this.keyword);
         ui.showFindResult(result);
     }

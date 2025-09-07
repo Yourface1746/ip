@@ -42,14 +42,16 @@ public class Sunday {
         assert ui != null : "UI cannot be null";
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
-        ui.welcome();
-        boolean isExit = false;
 
+        ui.welcome();
+
+        boolean isExit = false;
         while (!isExit) {
             try {
                 ui.showDivider();
                 String fullCommand = ui.readInput();
                 assert fullCommand != null : "UI should not return null";
+
                 Command command = Parser.parse(fullCommand);
                 assert command != null : "Parser returned null Command";
                 command.execute(this.taskList, this.ui, this.storage);

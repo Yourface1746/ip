@@ -23,14 +23,17 @@ public class DeleteCommand extends Command {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
         assert arg != null : "Input cannot be null";
+
         if (arg.isBlank()) {
             throw new MissingTaskNumberException();
         }
-        int pos = Integer.parseInt(arg);
-        if (pos <= 0 || pos > taskList.size()) {
-            throw new TaskNumberOutOfRangeException(pos, taskList.size());
+
+        int index1Based = Integer.parseInt(arg.trim());
+        if (index1Based <= 0 || index1Based > taskList.size()) {
+            throw new TaskNumberOutOfRangeException(index1Based, taskList.size());
         }
-        Task removed = taskList.delete(pos - 1, storage);
+
+        Task removed = taskList.delete(index1Based - 1, storage);
         System.out.println(" Noted. I've removed this task:");
         System.out.println("   " + removed);
         System.out.println(" Now you have " + taskList.size() + " tasks in the list.");

@@ -23,9 +23,11 @@ public class TodoCommand extends Command {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
         assert desc != null : "Input cannot be null";
+
         if (desc.isBlank()) {
             throw new TodoMissingDescriptionException();
         }
+
         Task task = new Todo(desc, false);
         taskList.add(task, storage);
         System.out.println(task.getAddMessage(taskList.size()));
