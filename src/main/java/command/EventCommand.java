@@ -21,6 +21,10 @@ public class EventCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws Exception {
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
+        assert arg != null : "Input cannot be null";
         String[] parts = arg.split("/from", 2);
 
         if (parts[0].isBlank()) {

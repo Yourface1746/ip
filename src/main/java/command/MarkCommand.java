@@ -32,7 +32,11 @@ public class MarkCommand extends Command {
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws Exception {
-        if (arg == null || arg.isBlank()) {
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
+        assert arg != null : "Input cannot be null";
+        if (arg.isBlank()) {
             throw new MissingTaskNumberException();
         }
         int pos = Integer.parseInt(arg.trim());

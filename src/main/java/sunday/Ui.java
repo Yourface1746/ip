@@ -62,6 +62,7 @@ public class Ui {
      * @param taskList the task list to show
      */
     public void displayList(TaskList taskList) {
+        assert taskList != null : "Task List must not be null";
         if (taskList.isEmpty()) {
             System.out.println("Your list is empty.");
             return;

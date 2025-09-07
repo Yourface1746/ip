@@ -26,6 +26,7 @@ public class Parser {
      * @throws SundayException if input is empty or unknown
      */
     public static Command parse(String fullCommand) throws SundayException {
+        assert fullCommand != null : "parse called with null input";
         if (fullCommand.isEmpty()) {
             throw new EmptyCommandException();
         }
@@ -53,6 +54,7 @@ public class Parser {
      * @return reconstructed task
      */
     public static Task lineToTaskCorrectly(String line) {
+        assert line != null : "lineToTaskCorrectly called with null input";
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();
