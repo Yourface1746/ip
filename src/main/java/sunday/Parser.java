@@ -2,7 +2,15 @@ package sunday;
 
 import java.util.Objects;
 
-import command.*;
+import command.ByeCommand;
+import command.Command;
+import command.DeadlineCommand;
+import command.DeleteCommand;
+import command.EventCommand;
+import command.FindCommand;
+import command.ListCommand;
+import command.MarkCommand;
+import command.TodoCommand;
 import exceptions.EmptyCommandException;
 import exceptions.SundayException;
 import exceptions.UnknownException;
@@ -26,9 +34,12 @@ public class Parser {
      * @throws SundayException if input is empty or unknown
      */
     public static Command parse(String fullCommand) throws SundayException {
+        assert fullCommand != null : "parse called with null input";
+
         if (fullCommand.isEmpty()) {
             throw new EmptyCommandException();
         }
+
         String[] parts = fullCommand.trim().split(" ", 2);
         String arg = parts.length > 1 ? parts[1] : "";
 
@@ -53,10 +64,13 @@ public class Parser {
      * @return reconstructed task
      */
     public static Task lineToTaskCorrectly(String line) {
+        assert line != null : "lineToTaskCorrectly called with null input";
+
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();
         }
+
         if (parts.length < 3) {
             throw new IllegalArgumentException("Wrong line: " + line);
         }
@@ -66,8 +80,7 @@ public class Parser {
         String desc = parts[2];
 
         switch (type) {
-        case ("T"):
-            return new Todo(desc, done);
+        case ("T"): return new Todo(desc, done);
 
         case ("D"):
             if (parts.length < 4) {
@@ -84,8 +97,7 @@ public class Parser {
                     DateTimeHelper.parseDateTime(parts[4]),
                     done);
 
-        default:
-            throw new IllegalArgumentException("Unknown Task.");
+        default: throw new IllegalArgumentException("Unknown Task.");
         }
     }
 }

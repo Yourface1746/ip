@@ -39,13 +39,19 @@ public class Sunday {
      * until the user exits.
      */
     public void run() throws Exception {
-        ui.welcome();
-        boolean isExit = false;
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
 
+        ui.welcome();
+
+        boolean isExit = false;
         while (!isExit) {
             try {
                 ui.showDivider();
                 String fullCommand = ui.readInput();
+                assert fullCommand != null : "UI should not return null";
+
                 Command command = Parser.parse(fullCommand);
                 command.execute(this.taskList, this.ui, this.storage);
                 isExit = command.isExit();
@@ -62,6 +68,10 @@ public class Sunday {
      * Used by the JavaFX GUI.
      */
     public String getResponse(String input) {
+        assert ui != null : "UI cannot be null";
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
+        assert input != null : "Input cannot be null";
         PrintStream originalOut = System.out;
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         try (PrintStream ps = new PrintStream(buffer)) {
@@ -83,8 +93,10 @@ public class Sunday {
 
     /** Returns true if the given input is an exit command (e.g., "bye"). */
     public boolean willExit(String input) {
+        assert input != null : "Input should never be null";
         try {
             Command c = Parser.parse(input);
+            assert c != null : "Parse.parse should not be called with null";
             return c.isExit();
         } catch (SundayException e) {
             return false;
