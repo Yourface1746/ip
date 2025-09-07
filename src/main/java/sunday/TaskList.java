@@ -16,6 +16,7 @@ public class TaskList {
     }
 
     public TaskList(List<Task> initial) {
+        assert initial != null : "initial list must not be null";
         this.taskList = new ArrayList<>(initial);
     }
 
@@ -50,6 +51,8 @@ public class TaskList {
      * @param storage storage to persist changes
      */
     public void add(Task task, Storage storage) {
+        assert task != null : "Task list must not be null";
+        assert storage != null : "Storage must not be null";
         taskList.add(task);
         storage.save(this.taskList);
     }
@@ -62,6 +65,7 @@ public class TaskList {
      * @return deleted task
      */
     public Task delete(int id, Storage storage) {
+        assert storage != null : "Storage must not be null";
         Task deleted = taskList.remove(id);
         storage.save(this.taskList);
         return deleted;
@@ -75,6 +79,7 @@ public class TaskList {
      * @param storage storage to persist changes
      */
     public void setAsDone(int id, boolean done, Storage storage) {
+        assert storage != null : "Storage must not be null";
         if (done) {
             this.taskList.get(id).markAsDone();
         } else {

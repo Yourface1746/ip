@@ -53,6 +53,7 @@ public class Sunday {
                 assert fullCommand != null : "UI should not return null";
 
                 Command command = Parser.parse(fullCommand);
+                assert command != null : "Parser returned null Command";
                 command.execute(this.taskList, this.ui, this.storage);
                 isExit = command.isExit();
                 ui.showDivider();
