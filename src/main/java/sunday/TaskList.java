@@ -72,6 +72,23 @@ public class TaskList {
     }
 
     /**
+     * Inserts the given task at the specified 0-based {@code index}, shifting subsequent tasks to the right,
+     * and persists the updated list via {@code storage}.
+     *
+     * <p>This is used by update operations to replace a task in place while preserving the original order.</p>
+     *
+     * @param index   position (0-based) at which to insert; must be between {@code 0} and {@code size()} inclusive
+     * @param task    task to insert; must not be {@code null}
+     * @param storage persistence component to save the updated list; must not be {@code null}
+     * @throws IndexOutOfBoundsException if {@code index < 0} or {@code index > size()}
+     */
+    public void insertAt(int index, Task task, Storage storage) {
+        assert storage != null : "Storage must not be null";
+        taskList.add(index, task);
+        storage.save(this.taskList);
+    }
+
+    /**
      * Marks/unmarks a task and saves.
      *
      * @param id      index (0-based)

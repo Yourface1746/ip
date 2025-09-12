@@ -11,6 +11,7 @@ import command.FindCommand;
 import command.ListCommand;
 import command.MarkCommand;
 import command.TodoCommand;
+import command.UpdateCommand;
 import exceptions.EmptyCommandException;
 import exceptions.SundayException;
 import exceptions.UnknownException;
@@ -53,6 +54,7 @@ public class Parser {
         case "deadline": return new DeadlineCommand(arg);
         case "event": return new EventCommand(arg);
         case "find": return new FindCommand(arg);
+        case "update": return new UpdateCommand(arg);
         default: throw new UnknownException();
         }
     }

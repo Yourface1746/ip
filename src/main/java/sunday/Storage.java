@@ -21,7 +21,6 @@ public class Storage {
     private final Path dataFile;
 
     public Storage(String relativeDataPath) {
-        assert relativeDataPath == null : "Storage is created with an empty string";
         this.dataFile = Paths.get(
                 System.getProperty("user.dir")).resolve(relativeDataPath);
         this.dataDir = dataFile.getParent();

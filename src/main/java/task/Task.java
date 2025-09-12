@@ -1,5 +1,8 @@
 package task;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  * Abstract base class for all task types.
  */
@@ -43,6 +46,34 @@ public class Task {
      */
     public String getTaskName() {
         return taskName;
+    }
+
+    /**
+     * @return task type
+     */
+    public String getTaskType() {
+        return "";
+    }
+
+    /**
+     * @return task deadline
+     */
+    public LocalDate getDeadLine() {
+        return null;
+    }
+
+    /**
+     * @return task From
+     */
+    public LocalDateTime getStartDate() {
+        return null;
+    }
+
+    /**
+     * @return task To
+     */
+    public LocalDateTime getEndDate() {
+        return null;
     }
 
     /**

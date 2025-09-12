@@ -24,6 +24,21 @@ public class Event extends Task {
     }
 
     @Override
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    @Override
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    @Override
+    public String getTaskType() {
+        return "E";
+    }
+
+    @Override
     public String toString() {
         return "[E]"
                 + super.toString()

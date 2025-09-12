@@ -20,6 +20,15 @@ public class Deadline extends Task {
         this.deadLine = DateTimeHelper.parseDate(deadLine);
     }
 
+    public LocalDate getDeadLine() {
+        return deadLine;
+    }
+
+    @Override
+    public String getTaskType() {
+        return "D";
+    }
+
     @Override
     public String toString() {
         return "[D]"
