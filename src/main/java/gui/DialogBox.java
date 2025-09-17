@@ -24,7 +24,7 @@ public class DialogBox extends HBox {
     @FXML
     private ImageView displayPicture;
 
-    private DialogBox(String text, Image img) {
+    private DialogBox(String text, Image img, boolean isUser, boolean isError) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
             fxmlLoader.setController(this);
@@ -36,6 +36,29 @@ public class DialogBox extends HBox {
 
         dialog.setText(text);
         displayPicture.setImage(img);
+
+        // Default alignment (user on right, bot on left handled by flip())
+        if (isUser) {
+            // user bubble on right, picture on right
+            // keep original order (text, image)
+            this.setAlignment(Pos.TOP_RIGHT);
+        } else {
+            // bot bubble on left, image on left
+            flip();
+        }
+
+        // Add CSS hooks
+        this.getStyleClass().add("dialog-box");
+        if (isUser) {
+            this.getStyleClass().add("user");
+        } else {
+            this.getStyleClass().add("bot");
+            dialog.getStyleClass().add("reply-label"); // keep your previous styling
+        }
+        if (isError) {
+            this.getStyleClass().add("error");
+            dialog.getStyleClass().add("error-text");
+        }
     }
 
     /**
@@ -46,16 +69,21 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
-        dialog.getStyleClass().add("reply-label");
+        // note: reply-label is added above for bot bubbles
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+        return new DialogBox(text, img, true, false);
     }
 
     public static DialogBox getDukeDialog(String text, Image img) {
-        var db = new DialogBox(text, img);
-        db.flip();
-        return db;
+        return new DialogBox(text, img, false, false);
+    }
+
+    /**
+     * New: dedicated factory for error replies
+     */
+    public static DialogBox getDukeErrorDialog(String text, Image img) {
+        return new DialogBox(text, img, false, true);
     }
 }

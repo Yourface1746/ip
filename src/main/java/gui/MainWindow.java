@@ -11,7 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import sunday.Sunday;
+import sunday.Response;
 
 /**
  * Controller for the main GUI.
@@ -48,12 +50,22 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = sunday.getResponse(input);
+        if (input == null || input.isBlank()) {
+            return;
+        }
+
+        // Use the metadata-aware response so we can style errors differently.
+        Response res = sunday.getResponseWithMeta(input); // <-- implement as shown earlier
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                res.isError()
+                        ? DialogBox.getDukeErrorDialog(res.getText(), dukeImage)
+                        : DialogBox.getDukeDialog(res.getText(), dukeImage)
         );
+
         userInput.clear();
+
         if (sunday.willExit(input)) {
             userInput.setDisable(true);
             sendButton.setDisable(true);

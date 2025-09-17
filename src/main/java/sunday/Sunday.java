@@ -68,28 +68,42 @@ public class Sunday {
      * Executes a single user command and returns the text that would normally be printed.
      * Used by the JavaFX GUI.
      */
-    public String getResponse(String input) {
+    public Response getResponseWithMeta(String input) {
         assert ui != null : "UI cannot be null";
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
         assert input != null : "Input cannot be null";
+
         PrintStream originalOut = System.out;
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        boolean isError = false;
+
         try (PrintStream ps = new PrintStream(buffer)) {
             System.setOut(ps);
             try {
                 Command command = Parser.parse(input);
                 command.execute(this.taskList, this.ui, this.storage);
             } catch (SundayException e) {
+                // User-facing error: concise and styled by GUI
                 System.out.println(e.getMessage());
+                isError = true;
             } catch (Exception e) {
-                e.printStackTrace();
+                // Keep stack trace out of the user bubble; log it to the real console instead
+                originalOut.println("[Internal] Unexpected error: " + e);
+                e.printStackTrace(originalOut);
+
+                System.out.println("Unexpected error occurred. Please try again or check logs.");
+                isError = true;
             }
         } finally {
             System.setOut(originalOut);
         }
+
         String out = buffer.toString().trim();
-        return out.isEmpty() ? "(no output)" : out;
+        if (out.isEmpty()) {
+            out = "(no output)";
+        }
+        return new Response(out, isError);
     }
 
     /** Returns true if the given input is an exit command (e.g., "bye"). */
