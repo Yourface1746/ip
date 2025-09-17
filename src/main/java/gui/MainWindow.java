@@ -17,6 +17,7 @@ import sunday.Response;
 
 /**
  * Controller for the main GUI.
+ * Similar to the one in tutorial.
  */
 public class MainWindow extends AnchorPane {
     @FXML

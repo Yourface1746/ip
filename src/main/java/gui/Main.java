@@ -11,6 +11,7 @@ import sunday.Sunday;
 
 /**
  * A GUI for Sunday using FXML.
+ * Similar to the one in the tutorial.
  */
 public class Main extends Application {
 
