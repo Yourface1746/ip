@@ -9,16 +9,18 @@ import task.Task;
  * Handles all interactions with the user: input, output, and displaying messages.
  */
 public class Ui {
+    private static final String DIVIDER = "____________________________________________________________";
+
     private final Scanner scanner = new Scanner(System.in);
 
     /**
      * Prints the welcome banner.
      */
     public void welcome() {
-        System.out.println("--------------------------------");
+        System.out.println(DIVIDER + "\n");
         System.out.println("Hi, I am sunday.Sunday. \nYour personal chatbot. :)");
-        System.out.println("How can I help you today?. (0.0)");
-        System.out.println("\n--------------------------------\n");
+        System.out.println("How can I help you today?. (0.0)\n");
+        System.out.println(DIVIDER + "\n");
     }
 
     /**
@@ -34,10 +36,9 @@ public class Ui {
      * @param message the error text to show
      */
     public void showError(String message) {
-        System.out.println("____________________________________________________________");
+        System.out.println(DIVIDER + "\n");
         System.out.println(" " + message);
-        System.out.println("____________________________________________________________");
-    }
+        System.out.println(DIVIDER + "\n");    }
 
     /**
      * Reads the next line of input from the user.
@@ -49,8 +50,7 @@ public class Ui {
     }
 
     public void showDivider() {
-        System.out.println("____________________________________________________________\n");
-    }
+        System.out.println(DIVIDER + "\n");    }
 
     public void showLoadingError(String message) {
         System.out.println("Error during loading. Starting with an empty list." + message);
