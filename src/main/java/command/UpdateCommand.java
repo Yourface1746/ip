@@ -74,6 +74,7 @@ public class UpdateCommand extends Command{
 
         Task updated;
 
+        //AI used here for ensuring that the if else statement checks everything.
         switch (selectedTask.getTaskType()) {
             case ("T"): {
                 if (newDesc == null || newDesc.isBlank()) {
@@ -111,6 +112,7 @@ public class UpdateCommand extends Command{
         System.out.println(updated);
     }
 
+    //AI Generated. (ChatGPT-5)
     public String strAfter(String src, String afterStr) {
         int at = src.indexOf(afterStr);
         if (at < 0) return null;
