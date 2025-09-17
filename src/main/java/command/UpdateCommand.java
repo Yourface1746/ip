@@ -113,7 +113,7 @@ public class UpdateCommand extends Command{
     }
 
     //AI Generated. (ChatGPT-5)
-    public String strAfter(String src, String afterStr) {
+    private static String strAfter(String src, String afterStr) {
         int at = src.indexOf(afterStr);
         if (at < 0) return null;
         int start = at + afterStr.length();
