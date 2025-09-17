@@ -60,13 +60,13 @@ public class TaskList {
     /**
      * Deletes a task at the given index and saves.
      *
-     * @param id      index (0-based)
+     * @param index      index (0-based)
      * @param storage storage to persist changes
      * @return deleted task
      */
-    public Task delete(int id, Storage storage) {
+    public Task delete(int index, Storage storage) {
         assert storage != null : "Storage must not be null";
-        Task deleted = taskList.remove(id);
+        Task deleted = taskList.remove(index);
         storage.save(this.taskList);
         return deleted;
     }
@@ -91,16 +91,16 @@ public class TaskList {
     /**
      * Marks/unmarks a task and saves.
      *
-     * @param id      index (0-based)
+     * @param index      index (0-based)
      * @param done    true = done, false = undone
      * @param storage storage to persist changes
      */
-    public void setAsDone(int id, boolean done, Storage storage) {
+    public void setAsDone(int index, boolean done, Storage storage) {
         assert storage != null : "Storage must not be null";
         if (done) {
-            this.taskList.get(id).markAsDone();
+            this.taskList.get(index).markAsDone();
         } else {
-            this.taskList.get(id).markAsUndone();
+            this.taskList.get(index).markAsUndone();
         }
         storage.save(this.taskList);
     }
