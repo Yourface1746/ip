@@ -7,38 +7,38 @@ import java.time.LocalDateTime;
  * Abstract base class for all task types.
  */
 public class Task {
-    private String taskName;
-    private boolean completed;
+    private final String taskName;
+    private boolean isCompleted;
 
     public Task(String taskName) {
         this.taskName = taskName;
-        this.completed = false;
+        this.isCompleted = false;
     }
 
     public Task(String taskName, boolean completed) {
         this.taskName = taskName;
-        this.completed = completed;
+        this.isCompleted = completed;
     }
 
     /**
      * @return "[X]" if done, "[ ]" if not
      */
     public String getStatus() {
-        return this.completed ? "X" : " ";
+        return this.isCompleted ? "X" : " ";
     }
 
     /**
      * Marks this task as done.
      */
     public void markAsDone() {
-        this.completed = true;
+        this.isCompleted = true;
     }
 
     /**
      * Marks this task as undone.
      */
     public void markAsUndone() {
-        this.completed = false;
+        this.isCompleted = false;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Task {
      * @return true if task is marked done
      */
     public boolean isDone() {
-        return completed;
+        return isCompleted;
     }
 
     public String toString() {
@@ -91,7 +91,7 @@ public class Task {
      * @return save format of the task
      */
     public String convertor() {
-        return "T | " + (this.completed ? 1 : 0) + " | " + this.taskName;
+        return "T | " + (this.isCompleted ? 1 : 0) + " | " + this.taskName;
     }
 
     public String getAddMessage(int count) {
