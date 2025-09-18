@@ -31,7 +31,7 @@ public class MainWindow extends AnchorPane {
 
     private Sunday sunday;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/Avatar.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
