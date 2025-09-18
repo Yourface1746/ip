@@ -8,8 +8,8 @@ import sunday.DateTimeHelper;
  * A task that spans from a start to an end datetime.
  */
 public class Event extends Task {
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
 
     public Event(String taskName, LocalDateTime startDate, LocalDateTime endDate, boolean done) {
         super(taskName, done);

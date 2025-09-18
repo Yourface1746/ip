@@ -8,7 +8,7 @@ import sunday.DateTimeHelper;
  * A task with a deadline date.
  */
 public class Deadline extends Task {
-    private LocalDate deadLine;
+    private final LocalDate deadLine;
 
     public Deadline(String taskName, LocalDate deadLine, boolean done) {
         super(taskName, done);
