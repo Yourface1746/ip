@@ -22,11 +22,11 @@ public class DateTimeHelper {
             DateTimeFormatter.ofPattern("d/M/uuuu HH:mm")
     );
 
-    public static final DateTimeFormatter dateSave = DateTimeFormatter.ISO_LOCAL_DATE;
-    public static final DateTimeFormatter dateTimeSave = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm");
+    public static final DateTimeFormatter DATE_SAVE = DateTimeFormatter.ISO_LOCAL_DATE;
+    public static final DateTimeFormatter DATE_TIME_SAVE = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm");
 
-    public static final DateTimeFormatter datePrint = DateTimeFormatter.ofPattern("MMM dd uuuu");
-    public static final DateTimeFormatter dateTimePrint = DateTimeFormatter.ofPattern("MMM dd uuuu h:mma");
+    public static final DateTimeFormatter DATE_PRINT = DateTimeFormatter.ofPattern("MMM dd uuuu");
+    public static final DateTimeFormatter DATE_TIME_PRINT = DateTimeFormatter.ofPattern("MMM dd uuuu h:mma");
 
     /**
      * Parses a date string into a LocalDate using several supported formats.

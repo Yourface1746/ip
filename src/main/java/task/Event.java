@@ -43,9 +43,9 @@ public class Event extends Task {
         return "[E]"
                 + super.toString()
                 + "(from: "
-                + this.startDate.format(DateTimeHelper.dateTimePrint)
+                + this.startDate.format(DateTimeHelper.DATE_TIME_PRINT)
                 + " to: "
-                + this.endDate.format(DateTimeHelper.dateTimePrint)
+                + this.endDate.format(DateTimeHelper.DATE_TIME_PRINT)
                 + ")";
     }
 
@@ -56,8 +56,8 @@ public class Event extends Task {
                 + " | "
                 + getTaskName()
                 + " | "
-                + this.startDate.format(DateTimeHelper.dateTimeSave)
+                + this.startDate.format(DateTimeHelper.DATE_TIME_SAVE)
                 + " | "
-                + this.endDate.format(DateTimeHelper.dateTimeSave);
+                + this.endDate.format(DateTimeHelper.DATE_TIME_SAVE);
     }
 }

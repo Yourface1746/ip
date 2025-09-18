@@ -34,7 +34,7 @@ public class Deadline extends Task {
         return "[D]"
                 + super.toString()
                 + "(by "
-                + this.deadLine.format(DateTimeHelper.datePrint)
+                + this.deadLine.format(DateTimeHelper.DATE_PRINT)
                 + ")";
     }
 
@@ -45,6 +45,6 @@ public class Deadline extends Task {
                 + " | "
                 + getTaskName()
                 + " | "
-                + this.deadLine.format(DateTimeHelper.dateSave);
+                + this.deadLine.format(DateTimeHelper.DATE_SAVE);
     }
 }
