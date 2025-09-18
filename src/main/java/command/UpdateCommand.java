@@ -45,7 +45,8 @@ public class UpdateCommand extends Command{
         assert args != null : "Input cannot be null";
 
         if (args.isBlank()) {
-            throw new MissingTaskNumberException();
+            throw new IllegalArgumentException(
+                    "Missing /changes. Usage: update <n> /changes [/desc ...] [/by ...] [/from ...] [/to ...]");
         }
 
         String[] parts = args.split("/changes", 2);
