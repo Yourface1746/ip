@@ -65,8 +65,8 @@ public class Parser {
      * @param line serialized task line
      * @return reconstructed task
      */
-    public static Task lineToTaskCorrectly(String line) {
-        assert line != null : "lineToTaskCorrectly called with null input";
+    public static Task parseTaskLine(String line) {
+        assert line != null : "parseTaskLine called with null input";
 
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {

@@ -50,7 +50,7 @@ public class Storage {
                 if (line.isEmpty()) {
                     continue;
                 }
-                allTask.add(Parser.lineToTaskCorrectly(line));
+                allTask.add(Parser.parseTaskLine(line));
             }
             return allTask;
         } catch (IOException e) {
